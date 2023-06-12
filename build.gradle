@@ -1,7 +1,7 @@
 plugins {
     id('java')
     id('maven-publish')
-    id('com.github.johnrengelman.shadow') version('5.2.0')
+    id('com.github.johnrengelman.shadow') version('7.1.0')
 }
 
 group("$projectGroup")
@@ -68,10 +68,11 @@ publishing {
     }
     publications {
         maven(MavenPublication) {
+            groupId project.getProperties().get("projectGroup")
+            artifactId 'en2do'
+            version project.getProperties().get("projectVersion")
+
             from components.java
-            artifact sourcesJar
-            artifact javadocJar
-            artifact shadowJar
         }
     }
 }
